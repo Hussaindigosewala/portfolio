@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Violet Hour — design tokens
+   Defined once in @theme so Tailwind generates:
+     - CSS variables: var(--color-bg), var(--font-display), …
+     - utilities: bg-bg, text-text, border-line, font-display, …
+   The short-named aliases (var(--bg), var(--accent), …) requested by the
+   design spec are mirrored in :root below.
+   ========================================================================= */
+@theme {
+  --color-bg: #0a0714; /* ink violet — page background */
+  --color-surface: #141021; /* cards, panels */
+  --color-line: rgba(157, 107, 255, 0.16); /* borders */
+  --color-text: #f2effa; /* primary text */
+  --color-muted: #9c93b8; /* secondary text */
+  --color-accent: #9d6bff; /* electric violet — buttons, links, CTAs */
+  --color-accent-soft: #c9b8ff; /* soft lilac — highlights, labels */
+
+  /* Fonts — wired to the next/font CSS variables set in app/layout.tsx */
+  --font-display: var(--font-bricolage);
+  --font-body: var(--font-manrope);
+  --font-accent: var(--font-unbounded);
+}
+
+/* Spec-named aliases so `var(--bg)`, `var(--accent)`, … resolve everywhere. */
+:root {
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --line: var(--color-line);
+  --text: var(--color-text);
+  --muted: var(--color-muted);
+  --accent: var(--color-accent);
+  --accent-soft: var(--color-accent-soft);
+}
+
+/* Base page styling (not a reset — Preflight from Tailwind handles resets). */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* =========================================================================
+   Lenis smooth scroll — recommended base styles.
+   (Lenis is initialized in lib/SmoothScroll.tsx; GSAP/ScrollTrigger sync
+   is wired in Phase 2.)
+   ========================================================================= */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.portfolio-flip-inner {
+  transition: transform 500ms;
+}
+.group:hover .portfolio-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.tool-node.is-lit .tool-node-caption {
+  opacity: 1;
+}
