@@ -23,6 +23,9 @@ const CLIENTS: ClientLogo[] = [
   { name: "The Face Shop", src: "/assets/clients/new-project-8.png" },
   { name: "KPIT Sparkle", src: "/assets/clients/new-project-9.png" },
   { name: "Somaiya Vidyavihar University", src: "/assets/clients/svu.png" },
+  { name: "Purplle", src: "/assets/clients/purplle.png" },
+  { name: "Times of India", src: "/assets/clients/times-of-india.png" },
+  { name: "Miss India Organization", src: "/assets/clients/miss-india-organization.jpeg" },
 ];
 
 const MAX_DISTANCE = 260;

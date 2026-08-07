@@ -90,7 +90,7 @@ export default function Hero() {
             Hussain Digosewala
           </h1>
           <p className="max-w-md font-body text-base text-muted sm:text-lg">
-            Graphic Designer, Content Creator &amp; NFT Artist
+            Sr. Graphic Designer | Content Creator | Art Director
           </p>
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-3 md:justify-start">
@@ -120,8 +120,8 @@ export default function Hero() {
             redraws the rectangle. The section's own ambient glow (above) is
             what lights this area. */}
         <div className="order-1 flex justify-center md:order-2 md:justify-end">
-          <div className="w-full max-w-[360px] sm:max-w-[440px] md:max-w-[540px]">
-            <Character pose="base" fit="cover" className="aspect-[3/2] w-full" />
+          <div className="w-full max-w-140 sm:max-w-180 md:max-w-220">
+            <Character pose="base" fit="cover" className="aspect-3/2 w-full" />
           </div>
         </div>
       </div>

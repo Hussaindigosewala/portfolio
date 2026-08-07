@@ -239,17 +239,10 @@ const SOCIAL_MEDIA_ITEMS: PortfolioItem[] = [
 export const CATEGORIES: PortfolioCategory[] = [
   {
     slug: "landing-creatives",
-    title: "Landing / Campaign Creatives",
+    title: "Landing Page Creatives",
     blurb: "Hero banners, sale campaigns, and print collateral.",
     subcategories: null,
     items: LANDING_CREATIVES_ITEMS,
-  },
-  {
-    slug: "motion-design",
-    title: "Motion Design",
-    blurb: "Looping animations, promos, and campaign GIFs.",
-    subcategories: null,
-    items: MOTION_DESIGN_ITEMS,
   },
   {
     slug: "social-media",
@@ -257,6 +250,13 @@ export const CATEGORIES: PortfolioCategory[] = [
     blurb: "Scroll-stopping posts, tailored per niche.",
     subcategories: SOCIAL_SUBCATEGORIES,
     items: SOCIAL_MEDIA_ITEMS,
+  },
+  {
+    slug: "motion-design",
+    title: "Emailers & Header Animations",
+    blurb: "Looping animations, promos, and campaign GIFs.",
+    subcategories: null,
+    items: MOTION_DESIGN_ITEMS,
   },
   {
     slug: "nft-artworks",
@@ -312,4 +312,17 @@ export function getFeaturedItems(slug: string): PortfolioItem[] {
   return ids
     .map((id) => category.items.find((i) => i.id === id))
     .filter((i): i is PortfolioItem => Boolean(i));
+}
+
+export function getAspectClass(slug: string): string {
+  switch (slug) {
+    case "landing-creatives":
+      return "aspect-3/4"; // portrait
+    case "motion-design":
+      return "aspect-16/9"; // wide rectangle
+    case "social-media":
+      return "aspect-square";
+    default:
+      return "aspect-4/3";
+  }
 }

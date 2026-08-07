@@ -70,7 +70,7 @@ export default function SocialFilterGrid({ items, subcategories, onSelect }: Soc
       >
         {visible.map((item) => (
           <li key={item.id}>
-            <PortfolioCard item={item} onSelect={onSelect} />
+            <PortfolioCard item={item} onSelect={onSelect} aspectClass="aspect-square" />
           </li>
         ))}
       </ul>

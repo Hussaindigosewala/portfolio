@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
-import { CATEGORIES, getFeaturedItems, type PortfolioItem } from "@/lib/portfolio-data";
+import { CATEGORIES, getFeaturedItems, getAspectClass, type PortfolioItem } from "@/lib/portfolio-data";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 export default function PortfolioHighlights() {
@@ -82,7 +82,12 @@ export default function PortfolioHighlights() {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                 {items.map((item) => (
-                  <PortfolioCard key={item.id} item={item} onSelect={setSelected} />
+                  <PortfolioCard
+                    key={item.id}
+                    item={item}
+                    onSelect={setSelected}
+                    aspectClass={getAspectClass(category.slug)}
+                  />
                 ))}
               </div>
             </div>

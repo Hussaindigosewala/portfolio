@@ -4,7 +4,7 @@ import { useState } from "react";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
 import SocialFilterGrid from "@/components/SocialFilterGrid";
-import type { PortfolioCategory, PortfolioItem } from "@/lib/portfolio-data";
+import { getAspectClass, type PortfolioCategory, type PortfolioItem } from "@/lib/portfolio-data";
 
 export default function PortfolioCategoryGrid({ category }: { category: PortfolioCategory }) {
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
@@ -21,7 +21,7 @@ export default function PortfolioCategoryGrid({ category }: { category: Portfoli
         <ul className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
           {category.items.map((item) => (
             <li key={item.id}>
-              <PortfolioCard item={item} onSelect={setSelected} />
+              <PortfolioCard item={item} onSelect={setSelected} aspectClass={getAspectClass(category.slug)} />
             </li>
           ))}
         </ul>

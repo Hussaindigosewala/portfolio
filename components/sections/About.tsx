@@ -8,7 +8,7 @@ import Character from "@/components/Character";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 const BIO =
-  "Hey there! I'm Hussain, a graphic designer and part-time NFT artist. I specialize in 2D surreal manipulations, creating dreamy escapes from reality, Emailer creatives, platform banners, and more. With four years in agencies and e-commerce, plus two years freelancing, I've mastered the art of meeting deadlines with a smile. Let's add some flair to your projects—whether it's spicing up branding or diving into NFTs, I'm your guy!";
+  "Senior Graphic Designer with 6+ years of experience producing polished, deadline-ready creative across web, static, and video formats. Expert in Adobe Creative Suite and Figma, hands-on experience with AI creative tools and AI-assisted workflow tools to accelerate production without sacrificing craft. Proven track record designing social, email, display, presentation, and web assets for global and domestic brands.";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,8 +80,8 @@ export default function About() {
         {/* Character on the LEFT — the "about" pose looks right, toward the bio.
             Frameless: see the note in Hero.tsx. */}
         <div className="order-1 flex justify-center md:justify-start">
-          <div className="w-full max-w-[360px] sm:max-w-[440px] md:max-w-[540px]">
-            <Character pose="about" fit="cover" className="aspect-[3/2] w-full" />
+          <div className="w-full max-w-105 sm:max-w-130 md:max-w-160">
+            <Character pose="about" fit="cover" className="aspect-3/2 w-full" />
           </div>
         </div>
 

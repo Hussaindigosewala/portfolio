@@ -5,9 +5,10 @@ import type { MediaType, PortfolioItem } from "@/lib/portfolio-data";
 interface PortfolioCardProps {
   item: PortfolioItem;
   onSelect: (item: PortfolioItem) => void;
+  aspectClass?: string;
 }
 
-export default function PortfolioCard({ item, onSelect }: PortfolioCardProps) {
+export default function PortfolioCard({ item, onSelect, aspectClass = "aspect-4/3" }: PortfolioCardProps) {
   const hasMedia = !item.isPlaceholder && item.mediaSrc !== null;
 
   return (
@@ -15,7 +16,7 @@ export default function PortfolioCard({ item, onSelect }: PortfolioCardProps) {
       type="button"
       onClick={() => onSelect(item)}
       aria-label={`View ${item.title}`}
-      className="group relative block aspect-4/3 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      className={`group relative block w-full ${aspectClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
       style={{ perspective: "1200px" }}
     >
       <div
