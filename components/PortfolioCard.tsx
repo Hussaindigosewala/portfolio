@@ -6,9 +6,15 @@ interface PortfolioCardProps {
   item: PortfolioItem;
   onSelect: (item: PortfolioItem) => void;
   aspectClass?: string;
+  alignTop?: boolean;
 }
 
-export default function PortfolioCard({ item, onSelect, aspectClass = "aspect-4/3" }: PortfolioCardProps) {
+export default function PortfolioCard({
+  item,
+  onSelect,
+  aspectClass = "aspect-4/3",
+  alignTop = false,
+}: PortfolioCardProps) {
   const hasMedia = !item.isPlaceholder && item.mediaSrc !== null;
 
   return (
@@ -38,7 +44,7 @@ export default function PortfolioCard({ item, onSelect, aspectClass = "aspect-4/
                 playsInline
                 autoPlay
                 preload="none"
-                className="absolute inset-0 h-full w-full object-cover"
+                className={`absolute inset-0 h-full w-full object-cover ${alignTop ? "object-top" : "object-center"}`}
               />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
@@ -46,7 +52,7 @@ export default function PortfolioCard({ item, onSelect, aspectClass = "aspect-4/
                 src={item.thumbnailSrc ?? item.mediaSrc ?? ""}
                 alt=""
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
+                className={`absolute inset-0 h-full w-full object-cover ${alignTop ? "object-top" : "object-center"}`}
               />
             )
           ) : (

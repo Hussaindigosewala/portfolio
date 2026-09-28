@@ -238,13 +238,6 @@ const SOCIAL_MEDIA_ITEMS: PortfolioItem[] = [
 
 export const CATEGORIES: PortfolioCategory[] = [
   {
-    slug: "landing-creatives",
-    title: "Landing Page Creatives",
-    blurb: "Hero banners, sale campaigns, and print collateral.",
-    subcategories: null,
-    items: LANDING_CREATIVES_ITEMS,
-  },
-  {
     slug: "social-media",
     title: "Social Media Creatives",
     blurb: "Scroll-stopping posts, tailored per niche.",
@@ -253,7 +246,7 @@ export const CATEGORIES: PortfolioCategory[] = [
   },
   {
     slug: "motion-design",
-    title: "Emailers & Header Animations",
+    title: "Motion Design",
     blurb: "Looping animations, promos, and campaign GIFs.",
     subcategories: null,
     items: MOTION_DESIGN_ITEMS,
@@ -264,6 +257,13 @@ export const CATEGORIES: PortfolioCategory[] = [
     blurb: "Surreal 2D manipulations and collectible art.",
     subcategories: null,
     items: NFT_ARTWORKS_ITEMS,
+  },
+  {
+    slug: "landing-creatives",
+    title: "Landing / Campaign Creatives",
+    blurb: "Hero banners, sale campaigns, and print collateral.",
+    subcategories: null,
+    items: LANDING_CREATIVES_ITEMS,
   },
 ];
 

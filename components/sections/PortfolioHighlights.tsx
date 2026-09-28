@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
-import { CATEGORIES, getFeaturedItems, getAspectClass, type PortfolioItem } from "@/lib/portfolio-data";
+import { CATEGORIES, getFeaturedItems, type PortfolioItem } from "@/lib/portfolio-data";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 export default function PortfolioHighlights() {
@@ -86,7 +86,8 @@ export default function PortfolioHighlights() {
                     key={item.id}
                     item={item}
                     onSelect={setSelected}
-                    aspectClass={getAspectClass(category.slug)}
+                    aspectClass="aspect-4/5"
+                    alignTop={category.slug === "landing-creatives"}
                   />
                 ))}
               </div>
