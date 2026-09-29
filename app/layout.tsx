@@ -55,8 +55,7 @@ export default function RootLayout({
         <Preloader
           images={
             getCategoryBySlug("nft-artworks")
-              ?.items.filter((item) => item.mediaType === "image")
-              .slice(0, 8)
+              ?.featured.filter((item) => item.mediaType === "image")
               .map((item) => item.mediaSrc)
               .filter((src): src is string => Boolean(src)) ?? []
           }

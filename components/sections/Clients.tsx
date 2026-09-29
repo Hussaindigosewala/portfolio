@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { optimizedImageUrl } from "@/lib/optimized-image";
 
 interface ClientLogo {
   name: string;
@@ -178,7 +179,7 @@ export default function Clients() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={client.src}
+              src={optimizedImageUrl(client.src, 320)}
               alt={client.name}
               draggable={false}
               className="h-full w-full object-contain"
@@ -204,7 +205,7 @@ export default function Clients() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={client.src}
+              src={optimizedImageUrl(client.src, 320)}
               alt={client.name}
               draggable={false}
               className="h-full w-full object-contain grayscale-60"

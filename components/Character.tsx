@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { optimizedImageUrl } from "@/lib/optimized-image";
 
 export type Pose = "base" | "about" | "desk" | "wave";
 
@@ -179,7 +180,7 @@ export default function Character({
       <div ref={containerRef} className={className} style={featherStyle}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={asset.poster}
+          src={optimizedImageUrl(asset.poster, 800)}
           alt={asset.alt}
           draggable={false}
           className={`h-full w-full ${objectFit}`}
@@ -193,7 +194,7 @@ export default function Character({
     <div ref={containerRef} className={className} style={featherStyle}>
       <video
         ref={videoRef}
-        poster={asset.poster}
+        poster={optimizedImageUrl(asset.poster, 800)}
         muted
         loop
         playsInline

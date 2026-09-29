@@ -1,6 +1,7 @@
 "use client";
 
 import type { MediaType, PortfolioItem } from "@/lib/portfolio-shared";
+import { optimizedImageUrl } from "@/lib/optimized-image";
 
 interface PortfolioCardProps {
   item: PortfolioItem;
@@ -38,21 +39,21 @@ export default function PortfolioCard({
             item.mediaType === "video" ? (
               <video
                 src={item.mediaSrc ?? undefined}
-                poster={item.thumbnailSrc ?? undefined}
+                poster={item.thumbnailSrc ? optimizedImageUrl(item.thumbnailSrc, 640) : undefined}
                 muted
                 loop
                 playsInline
                 autoPlay
                 preload="none"
-                className={`absolute inset-0 h-full w-full object-cover ${alignTop ? "object-top" : "object-center"}`}
+                className="absolute inset-0 h-full w-full object-cover"
               />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={item.thumbnailSrc ?? item.mediaSrc ?? ""}
+                src={optimizedImageUrl(item.thumbnailSrc ?? item.mediaSrc ?? "", 640)}
                 alt=""
                 loading="lazy"
-                className={`absolute inset-0 h-full w-full object-cover ${alignTop ? "object-top" : "object-center"}`}
+                className="absolute inset-0 h-full w-full object-cover"
               />
             )
           ) : (
@@ -70,7 +71,7 @@ export default function PortfolioCard({
               aria-hidden="true"
               className="absolute inset-0 opacity-30 blur-sm"
               style={{
-                backgroundImage: `url(${item.thumbnailSrc ?? item.mediaSrc})`,
+                backgroundImage: `url(${optimizedImageUrl(item.thumbnailSrc ?? item.mediaSrc ?? "", 400)})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}

@@ -21,7 +21,7 @@ const CATEGORY_META: Record<
     title: "Social Media Creatives",
     blurb: "Scroll-stopping posts, tailored per niche.",
     hasTop: true,
-    hasSubcategories: true,
+    hasSubcategories: false,
   },
   "landing-creatives": {
     title: "Landing Page Creatives",

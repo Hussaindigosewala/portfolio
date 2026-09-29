@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Character from "@/components/Character";
+import { optimizedImageUrl } from "@/lib/optimized-image";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 
@@ -168,7 +169,7 @@ export default function ToolsArsenal() {
                 {node.icon ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={node.icon}
+                    src={optimizedImageUrl(node.icon, 200)}
                     alt=""
                     className="h-full w-full object-contain"
                   />
