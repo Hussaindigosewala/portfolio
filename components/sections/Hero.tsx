@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Character from "@/components/Character";
+import SocialIcons from "@/components/SocialIcons";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
 export default function Hero() {
@@ -107,6 +108,8 @@ export default function Hero() {
               Get in Touch
             </a>
           </div>
+
+          <SocialIcons className="mt-2 justify-center md:justify-start" />
         </div>
 
         {/* Character — stays anchored during the pin. No card/frame: the asset

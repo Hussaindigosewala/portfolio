@@ -5,6 +5,7 @@ import SmoothScroll from "@/lib/SmoothScroll";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Preloader from "@/components/Preloader";
+import { getCategoryBySlug } from "@/lib/portfolio-scan";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -51,7 +52,15 @@ export default function RootLayout({
         className="bg-bg font-body text-text antialiased"
         suppressHydrationWarning
       >
-        <Preloader />
+        <Preloader
+          images={
+            getCategoryBySlug("nft-artworks")
+              ?.items.filter((item) => item.mediaType === "image")
+              .slice(0, 8)
+              .map((item) => item.mediaSrc)
+              .filter((src): src is string => Boolean(src)) ?? []
+          }
+        />
         <SmoothScroll>
           <Nav />
           <main>{children}</main>

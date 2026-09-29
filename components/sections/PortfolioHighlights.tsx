@@ -6,10 +6,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
-import { CATEGORIES, getFeaturedItems, type PortfolioItem } from "@/lib/portfolio-data";
+import { getAspectClass, type PortfolioCategory, type PortfolioItem } from "@/lib/portfolio-shared";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 
-export default function PortfolioHighlights() {
+export default function PortfolioHighlights({ categories }: { categories: PortfolioCategory[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
 
@@ -60,13 +60,12 @@ export default function PortfolioHighlights() {
       </div>
 
       <div className="flex w-full max-w-6xl flex-col gap-14">
-        {CATEGORIES.map((category) => {
-          const items = getFeaturedItems(category.slug);
-          if (items.length === 0) return null;
+        {categories.map((category) => {
+          if (category.featured.length === 0) return null;
           return (
             <div key={category.slug} data-portfolio-row className="flex flex-col gap-5">
               <div className="flex items-center justify-between gap-4">
-                 <h3 className="text-balance font-accent text-xl font-bold uppercase tracking-tight text-text sm:text-2xl">
+                <h3 className="text-balance font-accent text-xl font-bold uppercase tracking-tight text-text sm:text-2xl">
                   {category.title}
                 </h3>
                 <Link
@@ -81,7 +80,7 @@ export default function PortfolioHighlights() {
               </div>
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-                {items.map((item) => (
+                {category.featured.map((item) => (
                   <PortfolioCard
                     key={item.id}
                     item={item}

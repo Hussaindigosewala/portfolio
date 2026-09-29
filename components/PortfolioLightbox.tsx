@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import type { PortfolioItem } from "@/lib/portfolio-data";
+import type { PortfolioItem } from "@/lib/portfolio-shared";
 
 interface PortfolioLightboxProps {
   item: PortfolioItem | null;

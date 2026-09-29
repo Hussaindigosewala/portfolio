@@ -4,15 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const PREVIEW_IMAGES = [
-  "/assets/portfolio/nft-artworks/burning-rose.jpg",
-  "/assets/portfolio/nft-artworks/giant-wolf.jpg",
-  "/assets/portfolio/nft-artworks/the-discovery.jpg",
-  "/assets/portfolio/nft-artworks/chained-2.jpg",
-  "/assets/portfolio/nft-artworks/fish-descovery.jpg",
-];
-
-export default function Preloader() {
+export default function Preloader({ images }: { images: string[] }) {
   const [hidden, setHidden] = useState(false);
   const [percent, setPercent] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
@@ -33,7 +25,8 @@ export default function Preloader() {
     }
 
     const imgTimer = window.setInterval(() => {
-      setActiveImg((i) => (i + 1) % PREVIEW_IMAGES.length);
+      if (images.length === 0) return;
+      setActiveImg((i) => (i + 1) % images.length);
     }, 450);
 
     const tween = gsap.to(counterState.current, {
@@ -81,7 +74,7 @@ export default function Preloader() {
       aria-hidden="true"
     >
       <div className="relative h-40 w-40 overflow-hidden rounded-xl border border-line sm:h-48 sm:w-48">
-        {PREVIEW_IMAGES.map((src, i) => (
+        {images.map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={src}

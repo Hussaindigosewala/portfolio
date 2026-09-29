@@ -1,6 +1,6 @@
 "use client";
 
-import type { MediaType, PortfolioItem } from "@/lib/portfolio-data";
+import type { MediaType, PortfolioItem } from "@/lib/portfolio-shared";
 
 interface PortfolioCardProps {
   item: PortfolioItem;

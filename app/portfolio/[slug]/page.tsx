@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PortfolioCategoryGrid from "@/components/PortfolioCategoryGrid";
-import { CATEGORIES, getCategoryBySlug } from "@/lib/portfolio-data";
+import { getCategorySlugs, getCategoryBySlug } from "@/lib/portfolio-scan";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,7 +12,7 @@ interface PageProps {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return CATEGORIES.map((category) => ({ slug: category.slug }));
+  return getCategorySlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

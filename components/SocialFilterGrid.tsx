@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import PortfolioCard from "@/components/PortfolioCard";
-import type { PortfolioItem, SocialSubcategory } from "@/lib/portfolio-data";
+import type { PortfolioItem, SocialSubcategory } from "@/lib/portfolio-shared";
 
 type Filter = "All" | SocialSubcategory;
 

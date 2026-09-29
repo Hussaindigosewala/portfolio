@@ -4,7 +4,7 @@ import { useState } from "react";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
 import SocialFilterGrid from "@/components/SocialFilterGrid";
-import { getAspectClass, type PortfolioCategory, type PortfolioItem } from "@/lib/portfolio-data";
+import { getAspectClass, type PortfolioCategory, type PortfolioItem } from "@/lib/portfolio-shared";
 
 export default function PortfolioCategoryGrid({ category }: { category: PortfolioCategory }) {
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
