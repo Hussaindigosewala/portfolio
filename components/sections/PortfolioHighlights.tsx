@@ -85,7 +85,7 @@ export default function PortfolioHighlights({ categories }: { categories: Portfo
                     key={item.id}
                     item={item}
                     onSelect={setSelected}
-                    aspectClass="aspect-4/5"
+                    aspectClass={category.slug === "motion-design" ? "aspect-16/9" : "aspect-4/5"}
                     alignTop={category.slug === "landing-creatives"}
                   />
                 ))}

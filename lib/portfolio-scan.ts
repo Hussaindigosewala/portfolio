@@ -30,7 +30,7 @@ const CATEGORY_META: Record<
     hasSubcategories: false,
   },
   "motion-design": {
-    title: "Emailers & Header Animations",
+    title: "Motion Design",
     blurb: "Looping animations, promos, and campaign GIFs.",
     hasTop: false,
     hasSubcategories: false,
@@ -63,17 +63,21 @@ function titleFromFilename(filename: string, fallback: string): string {
     .slice(0, 60);
 }
 
-function listFiles(dir: string): string[] {
+function listFiles(dir: string, naturalOrder = false): string[] {
   if (!fs.existsSync(dir)) return [];
-  return fs
+  const files = fs
     .readdirSync(dir, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name)
     .filter((name) => {
       const ext = path.extname(name).toLowerCase();
       return IMAGE_EXT.has(ext) || VIDEO_EXT.has(ext);
-    })
-    .sort();
+    });
+
+  if (naturalOrder) {
+    return files.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
+  }
+  return files.sort();
 }
 
 function buildItem(
@@ -104,7 +108,9 @@ function scanCategory(slug: string): PortfolioCategory {
   const baseDir = path.join(PORTFOLIO_ROOT, slug);
 
   const displayFiles = listFiles(path.join(baseDir, "display"));
-  const topFiles = meta.hasTop ? listFiles(path.join(baseDir, "top")) : [];
+  const topFiles = meta.hasTop
+    ? listFiles(path.join(baseDir, "top"), slug === "social-media")
+    : [];
   const looseFiles = listFiles(baseDir);
 
   const featured = displayFiles.map((f, i) => buildItem(slug, "display", f, i, null));
