@@ -75,7 +75,10 @@ function listFiles(dir: string, naturalOrder = false): string[] {
     });
 
   if (naturalOrder) {
-    return files.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
+    const stem = (name: string) => name.replace(/\.[^.]+$/, "");
+    return files.sort((a, b) =>
+      stem(a).localeCompare(stem(b), undefined, { numeric: true, sensitivity: "base" }),
+    );
   }
   return files.sort();
 }
